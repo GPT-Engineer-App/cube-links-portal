@@ -1,12 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, SimpleGrid, IconButton, Image, Input, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, Text, VStack, HStack } from "@chakra-ui/react";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 
 const Index = () => {
-  const [links, setLinks] = useState([
-    { id: 1, name: "Google", url: "https://www.google.com", image: 'https://images.unsplash.com/photo-1553895501-af9e282e7fc1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxnb29nbGUlMjBob21lcGFnZXxlbnwwfHx8fDE3MTQwNTk3NjV8MA&ixlib=rb-4.0.3&q=80&w=1080' },
-    { id: 2, name: "Facebook", url: "https://www.facebook.com", image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxmYWNlYm9vayUyMGhvbWVwYWdlfGVufDB8fHx8MTcxNDA1OTc2NXww&ixlib=rb-4.0.3&q=80&w=1080' },
-  ]);
+  const [links, setLinks] = useState([]);
+
+  useEffect(() => {
+    const savedLinks = JSON.parse(localStorage.getItem("links")) || [];
+    setLinks(savedLinks);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("links", JSON.stringify(links));
+  }, [links]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [newLink, setNewLink] = useState({ name: "", url: "", image: "" });
 
@@ -31,7 +37,7 @@ const Index = () => {
         </HStack>
         <SimpleGrid columns={{ base: 1, md: 3, lg: 4 }} spacing={10}>
           {links.map((link) => (
-            <Box key={link.id} p={5} shadow="md" borderWidth="1px" borderRadius="lg">
+            <Box key={link.id} p={5} shadow="md" borderWidth="1px" borderRadius="lg" as="a" href={link.url} _hover={{ textDecoration: "none" }}>
               <VStack>
                 <Image src={link.image} alt={link.name} boxSize="150px" objectFit="cover" borderRadius="md" />
                 <Text mt={4} fontSize="lg" fontWeight="bold">

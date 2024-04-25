@@ -5,7 +5,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Index />} />
+        <Route path="/" element={<Index />} />
+        <Route path="/qa" element={<Index department="QA" />} />
       </Routes>
     </Router>
   );
