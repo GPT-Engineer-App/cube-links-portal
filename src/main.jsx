@@ -11,12 +11,16 @@ const colors = {
   },
 };
 
-const theme = extendTheme({ colors });
+const config = {
+  initialColorMode: "light",
+  useSystemColorMode: true,
+};
+const theme = extendTheme({ colors, config });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
       <App />
     </ChakraProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
