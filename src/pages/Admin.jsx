@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Input, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, VStack, HStack, IconButton, Image, Text } from "@chakra-ui/react";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 
 function Admin() {
   const [endpoint, setEndpoint] = useState("");
@@ -50,6 +50,7 @@ function Admin() {
         </Box>
       ))}
       <p>Manage layouts and configurations here. Create and save different endpoints with specific sets of links.</p>
+      <IconButton icon={<FaPlus />} colorScheme="blue" aria-label="Add link" onClick={() => setIsOpen(true)} />
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -59,6 +60,7 @@ function Admin() {
             <VStack spacing={4}>
               <Input placeholder="Name" value={newLink.name} onChange={(e) => setNewLink({ ...newLink, name: e.target.value })} />
               <Input placeholder="URL" value={newLink.url} onChange={(e) => setNewLink({ ...newLink, url: e.target.value })} />
+              <Input placeholder="Endpoint" value={newLink.endpoint} onChange={(e) => setNewLink({ ...newLink, endpoint: e.target.value })} />
               <Input placeholder="Endpoint" value={newLink.endpoint} onChange={(e) => setNewLink({ ...newLink, endpoint: e.target.value })} />
               <Input placeholder="URL" value={newLink.url} onChange={(e) => setNewLink({ ...newLink, url: e.target.value })} />
               <Input placeholder="Image URL" value={newLink.image} onChange={(e) => setNewLink({ ...newLink, image: e.target.value })} />
