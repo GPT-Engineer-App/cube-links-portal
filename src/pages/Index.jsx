@@ -1,16 +1,14 @@
-import { useState, useEffect, useParams } from "react";
+import { useState, useEffect } from "react";
 import { Box, SimpleGrid, IconButton, Image, Input, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, Text, VStack, HStack } from "@chakra-ui/react";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 
 const Index = () => {
-  const { id } = useParams();
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
-    const savedData = id ? localStorage.getItem(id) : localStorage.getItem("links");
-    const { links: savedLinks } = savedData ? JSON.parse(savedData) : { links: [] };
+    const savedLinks = JSON.parse(localStorage.getItem("links")) || [];
     setLinks(savedLinks);
-  }, [id]);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("links", JSON.stringify(links));

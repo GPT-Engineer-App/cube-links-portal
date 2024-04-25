@@ -6,9 +6,7 @@ function Admin() {
   const [links, setLinks] = useState([]);
 
   const handleSaveEndpoint = () => {
-    const uniqueId = Date.now().toString();
-    localStorage.setItem(uniqueId, JSON.stringify({ endpoint, links }));
-    alert(`Shareable link: ${window.location.origin}/shared/${uniqueId}`);
+    localStorage.setItem(endpoint, JSON.stringify(links));
     setEndpoint("");
     setLinks([]);
   };
