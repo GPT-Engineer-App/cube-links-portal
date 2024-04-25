@@ -9,6 +9,7 @@ function App() {
         <Route path="/" element={<Index />} />
         <Route path="/qa" element={<Index department="QA" />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/shared/:id" element={<Index />} />
       </Routes>
     </Router>
   );
