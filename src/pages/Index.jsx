@@ -17,7 +17,8 @@ const Index = () => {
   const [newLink, setNewLink] = useState({ name: "", url: "", image: "" });
 
   const handleAddLink = () => {
-    setLinks([...links, { ...newLink, id: links.length + 1 }]);
+    const faviconUrl = `https://www.google.com/s2/favicons?domain=${newLink.url}`;
+    setLinks([...links, { ...newLink, image: faviconUrl, id: links.length + 1 }]);
     onClose();
     setNewLink({ name: "", url: "", image: "" });
   };
