@@ -18,7 +18,7 @@ const Index = () => {
   const [newLink, setNewLink] = useState({ name: "", url: "", image: "" });
 
   const handleAddLink = () => {
-    const faviconUrl = `https://www.google.com/s2/favicons?domain=${newLink.url}`;
+    const faviconUrl = `https://s2.googleusercontent.com/s2/favicons?domain_url=${newLink.url}&sz=64`;
     setLinks([...links, { ...newLink, image: faviconUrl, id: links.length + 1 }]);
     onClose();
     setNewLink({ name: "", url: "", image: "" });
@@ -44,7 +44,7 @@ const Index = () => {
           {links.map((link) => (
             <Box key={link.id} p={5} shadow="md" borderWidth="1px" borderRadius="lg" as="a" href={`https://${link.url}`} target="_blank" _hover={{ textDecoration: "none" }}>
               <VStack>
-                <Image src={link.image} alt={link.name} boxSize="150px" objectFit="cover" borderRadius="md" />
+                <Image src={link.image} alt={link.name} boxSize="100px" objectFit="cover" borderRadius="md" />
                 <Text mt={4} fontSize="lg" fontWeight="bold">
                   {link.name}
                 </Text>

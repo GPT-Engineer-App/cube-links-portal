@@ -30,13 +30,14 @@ function Admin() {
     <Box p={8}>
       <h1>Admin Panel</h1>
       <Input placeholder="New Endpoint Name" value={endpoint} onChange={(e) => setEndpoint(e.target.value)} />
-      <Button onClick={handleSaveEndpoint} colorScheme="blue">
-        Save Endpoint
+      <Input placeholder="Specify Endpoint" value={endpoint} onChange={(e) => setEndpoint(e.target.value)} />
+      <Button onClick={handleSaveEndpoint} colorScheme="blue" mt={2}>
+        Save to Specified Endpoint
       </Button>
       {links.map((link) => (
         <Box key={link.id} p={5} shadow="md" borderWidth="1px" borderRadius="lg">
           <VStack>
-            <Image src={link.image} alt={link.name} boxSize="150px" objectFit="cover" borderRadius="md" />
+            <Image src={link.image} alt={link.name} boxSize="100px" objectFit="cover" borderRadius="md" />
             <Text mt={4} fontSize="lg" fontWeight="bold">
               {link.name}
             </Text>
