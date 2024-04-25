@@ -48,36 +48,12 @@ const Index = () => {
                 <Text mt={4} fontSize="lg" fontWeight="bold">
                   {link.name}
                 </Text>
-                <HStack>
-                  <IconButton icon={<FaEdit />} colorScheme="yellow" aria-label="Edit link" />
-                  <IconButton icon={<FaTrash />} colorScheme="red" aria-label="Delete link" onClick={() => handleDelete(link.id)} />
-                </HStack>
+                <HStack></HStack>
               </VStack>
             </Box>
           ))}
         </SimpleGrid>
       </VStack>
-
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Add New Link</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <VStack spacing={4}>
-              <Input placeholder="Name" value={newLink.name} onChange={(e) => setNewLink({ ...newLink, name: e.target.value })} />
-              <Input placeholder="URL" value={newLink.url} onChange={(e) => setNewLink({ ...newLink, url: e.target.value })} />
-              <Input placeholder="Image URL" value={newLink.image} onChange={(e) => setNewLink({ ...newLink, image: e.target.value })} />
-            </VStack>
-          </ModalBody>
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={handleAddLink}>
-              Add Link
-            </Button>
-            <Button onClick={onClose}>Cancel</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
     </Box>
   );
 };
