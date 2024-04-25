@@ -40,7 +40,7 @@ const Index = () => {
         </HStack>
         <SimpleGrid columns={{ base: 1, md: 3, lg: 4 }} spacing={10}>
           {links.map((link) => (
-            <Box key={link.id} p={5} shadow="md" borderWidth="1px" borderRadius="lg" as="a" href={`https://${link.url}`} _hover={{ textDecoration: "none" }}>
+            <Box key={link.id} p={5} shadow="md" borderWidth="1px" borderRadius="lg" as="a" href={`https://${link.url}`} target="_blank" _hover={{ textDecoration: "none" }}>
               <VStack>
                 <Image src={link.image} alt={link.name} boxSize="150px" objectFit="cover" borderRadius="md" />
                 <Text mt={4} fontSize="lg" fontWeight="bold">
