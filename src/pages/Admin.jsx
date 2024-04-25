@@ -15,7 +15,8 @@ function Admin() {
   };
 
   const handleAddLink = () => {
-    setLinks([...links, newLink]);
+    const endpointLinks = JSON.parse(localStorage.getItem("links_" + newLink.endpoint)) || [];
+    localStorage.setItem("links_" + newLink.endpoint, JSON.stringify([...endpointLinks, { ...newLink, id: endpointLinks.length + 1 }]));
     setNewLink({ name: "", url: "", image: "" });
     setIsOpen(false);
   };
@@ -30,7 +31,7 @@ function Admin() {
     <Box p={8}>
       <h1>Admin Panel</h1>
       <Input placeholder="New Endpoint Name" value={endpoint} onChange={(e) => setEndpoint(e.target.value)} />
-      <Input placeholder="Specify Endpoint" value={endpoint} onChange={(e) => setEndpoint(e.target.value)} />
+
       <Button onClick={handleSaveEndpoint} colorScheme="blue" mt={2}>
         Save to Specified Endpoint
       </Button>
@@ -57,6 +58,8 @@ function Admin() {
           <ModalBody>
             <VStack spacing={4}>
               <Input placeholder="Name" value={newLink.name} onChange={(e) => setNewLink({ ...newLink, name: e.target.value })} />
+              <Input placeholder="URL" value={newLink.url} onChange={(e) => setNewLink({ ...newLink, url: e.target.value })} />
+              <Input placeholder="Endpoint" value={newLink.endpoint} onChange={(e) => setNewLink({ ...newLink, endpoint: e.target.value })} />
               <Input placeholder="URL" value={newLink.url} onChange={(e) => setNewLink({ ...newLink, url: e.target.value })} />
               <Input placeholder="Image URL" value={newLink.image} onChange={(e) => setNewLink({ ...newLink, image: e.target.value })} />
             </VStack>
