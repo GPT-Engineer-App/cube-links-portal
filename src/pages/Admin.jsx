@@ -50,7 +50,9 @@ function Admin() {
         </Box>
       ))}
       <p>Manage layouts and configurations here. Create and save different endpoints with specific sets of links.</p>
-      <IconButton icon={<FaPlus />} colorScheme="blue" aria-label="Add link" onClick={() => setIsOpen(true)} />
+      <HStack justifyContent="flex-end">
+        <IconButton icon={<FaPlus />} colorScheme="blue" aria-label="Add link" onClick={() => setIsOpen(true)} />
+      </HStack>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -59,10 +61,7 @@ function Admin() {
           <ModalBody>
             <VStack spacing={4}>
               <Input placeholder="Name" value={newLink.name} onChange={(e) => setNewLink({ ...newLink, name: e.target.value })} />
-              <Input placeholder="URL" value={newLink.url} onChange={(e) => setNewLink({ ...newLink, url: e.target.value })} />
-              <Input placeholder="Endpoint" value={newLink.endpoint} onChange={(e) => setNewLink({ ...newLink, endpoint: e.target.value })} />
-              <Input placeholder="Endpoint" value={newLink.endpoint} onChange={(e) => setNewLink({ ...newLink, endpoint: e.target.value })} />
-              <Input placeholder="URL" value={newLink.url} onChange={(e) => setNewLink({ ...newLink, url: e.target.value })} />
+              <Input placeholder="Endpoint (default: homepage)" value={newLink.endpoint || "homepage"} onChange={(e) => setNewLink({ ...newLink, endpoint: e.target.value || "homepage" })} />
               <Input placeholder="Image URL" value={newLink.image} onChange={(e) => setNewLink({ ...newLink, image: e.target.value })} />
             </VStack>
           </ModalBody>
