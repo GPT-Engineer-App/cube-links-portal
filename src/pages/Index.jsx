@@ -6,7 +6,8 @@ const Index = () => {
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
-    const savedLinks = JSON.parse(localStorage.getItem("links")) || [];
+    const endpoint = window.location.pathname.replace("/", "") || "default";
+    const savedLinks = JSON.parse(localStorage.getItem("links_" + endpoint)) || [];
     setLinks(savedLinks);
   }, []);
 

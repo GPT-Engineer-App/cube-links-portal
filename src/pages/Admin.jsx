@@ -6,7 +6,7 @@ function Admin() {
   const [links, setLinks] = useState([]);
 
   const handleSaveEndpoint = () => {
-    localStorage.setItem(endpoint, JSON.stringify(links));
+    localStorage.setItem("links_" + endpoint, JSON.stringify(links));
     setEndpoint("");
     setLinks([]);
   };

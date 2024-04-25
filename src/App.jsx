@@ -7,7 +7,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route path="/qa" element={<Index department="QA" />} />
+        <Route path="/*" element={<Index />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </Router>
